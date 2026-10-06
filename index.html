@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Weather Mood Board</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Now</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-cloudy">
-  <main>
-    <h1 id="temp">--°C</h1>
-    <p id="msg">Location detect kar rahe hain...</p>
-    <p>💨 <span id="wind">--</span></p>
-    <button id="locBtn">📍 Use My Location</button>
-  </main>
+<body>
+  <div class="container">
+    <h1>🌤️ Weather Now</h1>
+    <p class="subtitle">Check weather for any Indian city</p>
+
+    <div class="search-row">
+      <input type="text" id="cityInput" placeholder="Enter city name (e.g. Patna)">
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <div id="status" class="status">Enter a city to see weather</div>
+
+    <div id="weatherCard" class="weather-card hidden">
+      <div class="city-name" id="cityName">—</div>
+      <div class="temp" id="temp">—°C</div>
+      <div class="condition" id="condition">—</div>
+      <div class="details">
+        <div class="detail">
+          <span class="label">Wind</span>
+          <span id="wind">— km/h</span>
+        </div>
+        <div class="detail">
+          <span class="label">Humidity</span>
+          <span id="humidity">—%</span>
+        </div>
+      </div>
+      <div class="suggestion" id="suggestion">—</div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
