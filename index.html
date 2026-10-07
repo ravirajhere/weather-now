@@ -3,25 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Now</title>
+  <title>Weather Now — Live Weather + 7-Day Forecast</title>
+  <meta name="description" content="Live weather with 7-day forecast, hourly forecast, AQI, and favorite cities. No API key, no backend.">
+  <meta name="author" content="Ravi Raj">
+  <meta name="theme-color" content="#0a0f1c">
+  <link rel="canonical" href="https://ravirajhere-weather.vercel.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Weather Now — Live Weather + 7-Day Forecast">
+  <meta property="og:description" content="Live weather · hourly forecast · 7-day forecast · AQI · favorites. No API key.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ravirajhere-weather.vercel.app/">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Weather Now">
+  <meta name="twitter:description" content="Live weather · hourly + 7-day forecast · AQI · favorites.">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>🌤️ Weather Now</h1>
-    <p class="subtitle">Check weather for any Indian city</p>
 
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>🌤️ Weather Now</h1>
+      <p class="subtitle">Live weather · 7-day forecast · AQI · v2.0</p>
+    </header>
+
+    <!-- Search -->
     <div class="search-row">
-      <input type="text" id="cityInput" placeholder="Enter city name (e.g. Patna)">
+      <input type="text" id="cityInput" placeholder="Enter city name (e.g. Patna)" autocomplete="off">
       <button id="searchBtn">Search</button>
     </div>
 
+    <!-- Favorites Bar -->
+    <div class="favorites-bar" id="favoritesBar" style="display: none;">
+      <span class="favorites-label">⭐ Saved:</span>
+      <div class="favorites-list" id="favoritesList"></div>
+    </div>
+
+    <!-- Status -->
     <div id="status" class="status">Enter a city to see weather</div>
 
+    <!-- Weather Card -->
     <div id="weatherCard" class="weather-card hidden">
-      <div class="city-name" id="cityName">—</div>
+
+      <!-- Loading Skeleton -->
+      <div class="skeleton" id="skeleton" style="display: none;">
+        <div class="skeleton-line skeleton-city"></div>
+        <div class="skeleton-line skeleton-temp"></div>
+        <div class="skeleton-line skeleton-cond"></div>
+        <div class="skeleton-row">
+          <div class="skeleton-line skeleton-small"></div>
+          <div class="skeleton-line skeleton-small"></div>
+          <div class="skeleton-line skeleton-small"></div>
+        </div>
+      </div>
+
+      <!-- City Header with Favorite Button -->
+      <div class="city-header">
+        <div class="city-name" id="cityName">—</div>
+        <button class="fav-btn" id="favBtn" type="button" aria-label="Save to favorites">☆</button>
+      </div>
+
+      <!-- Current Temperature -->
       <div class="temp" id="temp">—°C</div>
       <div class="condition" id="condition">—</div>
+      <div class="day-night-badge" id="dayNightBadge" style="display: none;"></div>
+
+      <!-- Details -->
       <div class="details">
         <div class="detail">
           <span class="label">Wind</span>
@@ -31,9 +84,52 @@
           <span class="label">Humidity</span>
           <span id="humidity">—%</span>
         </div>
+        <div class="detail">
+          <span class="label">AQI</span>
+          <span id="aqi">—</span>
+        </div>
       </div>
+
+      <!-- Suggestion -->
       <div class="suggestion" id="suggestion">—</div>
+
+      <!-- AQI Badge -->
+      <div class="aqi-badge" id="aqiBadge" style="display: none;">
+        <span id="aqiQuality">—</span>
+      </div>
+
     </div>
+
+    <!-- Hourly Forecast -->
+    <section class="forecast-section" id="hourlySection" style="display: none;">
+      <h2 class="forecast-title">Next 24 Hours</h2>
+      <div class="hourly-scroll" id="hourlyList"></div>
+    </section>
+
+    <!-- 7-Day Forecast -->
+    <section class="forecast-section" id="dailySection" style="display: none;">
+      <h2 class="forecast-title">7-Day Forecast</h2>
+      <div class="daily-list" id="dailyList"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong>Weather Now</strong>
+          <span class="footer-version">v2.0</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/ravirajhere/weather-now" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://ravirajhere-portfolio.vercel.app" target="_blank" rel="noopener noreferrer">Portfolio</a>
+          <a href="mailto:raviraj2k09@gmail.com">Feedback</a>
+        </div>
+      </div>
+      <p class="footer-note">
+        © Ravi Raj · Made with ❤️ &amp; Curiosity
+      </p>
+    </footer>
+
   </div>
 
   <script src="script.js"></script>
